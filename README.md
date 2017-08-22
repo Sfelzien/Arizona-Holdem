@@ -1,2 +1,2 @@
 # az-holdem
-A start to Arizona HoldEm
+Arizona Holdem is a simplified version of Texas HoldEm.
