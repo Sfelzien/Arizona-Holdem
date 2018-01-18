@@ -2,7 +2,7 @@ package model;
 
 // Model a Card, five of which will model a poker hand.
 //
-public class Card {
+public class Card implements Comparable<Card>{
   private final Rank rank;
   private final Suit suit;
 
@@ -21,6 +21,17 @@ public class Card {
 
   public int getValue() {
     return rank.getValue();
+  }
+  
+  @Override
+  public int compareTo(Card o) {
+      if (this.rank.getValue() < o.rank.getValue()) {
+          return -1;
+      }
+      else if (o.rank.getValue() < this.rank.getValue()) {
+          return 1;
+      }
+      return 0;
   }
 
     public String toString() {

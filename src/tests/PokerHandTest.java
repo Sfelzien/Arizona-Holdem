@@ -23,6 +23,12 @@ import model.Suit;
  * The include enums Suit and Rank @Tests should pass since both enums are complete
 */
 public class PokerHandTest {
+	
+
+	public void testStuff() {
+		PokerHand a = new PokerHand(C2, C3, C4, C5, C6);
+		a.display(); 
+	}
 
   @Test
   public void testSuitEnum() {
@@ -45,6 +51,14 @@ public class PokerHandTest {
   @Test(expected = DuplicateCardException.class)
   public void tryToAddTheSameCardTwiceA() {
     new PokerHand(C2, C3, C4, C5, C5);
+  }
+  
+  @Test()
+  public void testPairs() {
+	  PokerHand a = new PokerHand(H3, CA, D4, H6, DA);
+	    a.toString();
+	   assertTrue(a.getRank() == 2);
+
   }
 
   @Test(expected = DuplicateCardException.class)
@@ -70,7 +84,14 @@ public class PokerHandTest {
     boolean answer = a.compareTo(b) < 0;
     assertTrue(answer);
   }
+  
+  @Test
+  public void testRoyalFlush() {
+    PokerHand a = new PokerHand(C10, CJ, CQ, CK, CA);
+    assertTrue(a.getRank() == 10);
+  }
 
+  
   // Set up 52 cards to use C2 instead of new Card(Rank.Deuce, Suit.Clubs)
   private final static Card C2 = new Card(Rank.DEUCE, Suit.CLUBS);
   private final static Card C3 = new Card(Rank.THREE, Suit.CLUBS);
